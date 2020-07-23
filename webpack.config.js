@@ -28,10 +28,12 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "css/style.min.css"
     }),
-    new CopyWebpackPlugin([
-      { from: 'src/view/' },
-      { from: 'src/img/', to: 'img/' }
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'src/view/' },
+        { from: 'src/img/', to: 'img/' }
+      ],
+    }),
   ],
   optimization: {
     minimizer: [
