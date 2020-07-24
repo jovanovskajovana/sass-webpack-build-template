@@ -1,8 +1,23 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const fs = require("fs");
+
+function generateHtmlTemplate(templateDir) {
+  const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir));
+  return templateFiles.map(item => {
+    const parts = item.split(".");
+    const name = parts[0];
+    const extension = parts[1];
+    return new HtmlWebpackPlugin({
+      filename: `${name}.html`,
+      template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`)
+    });
+  });
+}
+
+const htmlPlugins = generateHtmlTemplate("./src/view");
 
 module.exports = {
   entry: './src/app.js',
@@ -11,36 +26,45 @@ module.exports = {
     filename: 'js/script.min.js'
   },
   module: {
-    rules: [{
-      test: /\.scss$/,
-      use: [
-        MiniCssExtractPlugin.loader,
-        "css-loader",
-        "sass-loader"
-      ]
-    },
-    {
-      test: /\.(png|jpg|gif|woff|woff2|eot|ttf|svg)$/,
-      loader: 'url-loader?limit=100000'
-    }]
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: "babel-loader"
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "sass-loader"
+        ]
+      },
+      {
+        test: /\.(png|jpg|gif|woff|woff2|eot|ttf|svg)$/,
+        loader: 'url-loader?limit=100000'
+      }
+    ]
   },
   plugins: [
     new MiniCssExtractPlugin({
       filename: "css/style.min.css"
     }),
-    new CopyWebpackPlugin([
-      { from: 'src/view/' },
-      { from: 'src/img/', to: 'img/' }
-    ]),
-  ],
-  optimization: {
-    minimizer: [
-      new UglifyJsPlugin({}),
-      new OptimizeCSSAssetsPlugin({})
-    ]
-  },
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: "src/images/",
+          to: "images/"
+        },
+        {
+          from: "src/fonts/",
+          to: "fonts/"
+        }
+      ]
+    })
+  ].concat(htmlPlugins),
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(__dirname, "dist"),
     compress: true,
     port: 8000
   }
