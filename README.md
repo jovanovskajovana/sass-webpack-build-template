@@ -8,7 +8,7 @@ Here is a quick start guide for [Webpack](https://webpack.js.org/) to a simpler 
 
 To write clear and maintainable code, we want to divide the JavaScript and CSS into small and logical parts. Browsers, on the other hand, prefer not to deal with multiple js files loaded in the app, as it requires many requests every time we visit a website, which is not good for performance.
 
-We use Webpack to bundle all of our CSS and JavaScript files into a single production ready file.
+So, we use Webpack to bundle all of our CSS and JavaScript files into a single production ready file.
 
 #### Install Webpack
 
