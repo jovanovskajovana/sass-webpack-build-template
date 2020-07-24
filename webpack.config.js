@@ -1,6 +1,5 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const MinifyPlugin = require("babel-minify-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const fs = require("fs");
@@ -21,7 +20,6 @@ function generateHtmlTemplate(templateDir) {
 const htmlPlugins = generateHtmlTemplate("./src/view");
 
 module.exports = {
-  mode: 'production',
   entry: './src/app.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -31,8 +29,8 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        use: "babel-loader",
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        use: "babel-loader"
       },
       {
         test: /\.scss$/,
@@ -49,7 +47,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new MinifyPlugin({}),
     new MiniCssExtractPlugin({
       filename: "css/style.min.css"
     }),

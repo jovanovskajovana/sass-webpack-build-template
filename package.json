@@ -5,13 +5,13 @@
   "author": "Jovanovska Jovana",
   "license": "ISC",
   "scripts": {
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dev-server --mode development",
     "build": "webpack"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
     "babel-loader": "^8.1.0",
-    "babel-minify-webpack-plugin": "^0.3.1",
     "copy-webpack-plugin": "^6.0.3",
     "css-loader": "^3.6.0",
     "html-webpack-plugin": "^4.3.0",
@@ -22,5 +22,10 @@
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
   }
 }
