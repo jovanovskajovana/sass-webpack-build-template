@@ -3,11 +3,10 @@
 Here is a quick start guide for [Webpack](https://webpack.js.org/) to a simpler setup and clean module architecture.
 
 <img src='./src/images/logo-sass-webpack.png' width='370'>
-<br/>
 
 ## 🚀 Setup
 
-In order to write transparent and readable code it’s essential to divide JavaScript and CSS code into small and concise parts. But, browsers prefer as few files as possible. We don’t want to have multiple js files loaded in the app, because every time we go to the website it makes many requests which is not good for the performance.
+To write clear and maintainable code, we want to divide the JavaScript and CSS into small and logical parts. Browsers, on the other hand, prefer not to deal with multiple js files loaded in the app, as it requires many requests every time we visit a website, which is not good for performance.
 
 So, we can use Webpack to bundle all of our CSS and JavaScript files into a single production ready file.
 
@@ -42,6 +41,38 @@ module.exports = {
 ```
 
 > Choose an entry point to start the application bundling process, specify a custom output in a production ready folder and define the [loaders](https://webpack.js.org/concepts/loaders/) and [plugins](https://webpack.js.org/concepts/plugins/) that will optimize the flow.
+
+#### Install Webpack loaders and plugins
+
+```
+npm install babel-loader @babel/core @babel/preset-env --save-dev
+```
+> Add [babel-loader](https://webpack.js.org/loaders/babel-loader/) and its dependencies to transpile ES6 code to vanilla JS.
+
+```
+npm install html-webpack-plugin --save-dev
+```
+> Set [HtmlWebpackPlugin](https://webpack.js.org/plugins/html-webpack-plugin/) to generate HTML5 files that will include all your webpack bundles in the body using script tags.
+
+```
+npm install css-loader sass-loader node-sass mini-css-extract-plugin --save-dev
+```
+> Add [css-loader](https://webpack.js.org/loaders/css-loader/#src/components/Sidebar/Sidebar.jsx), [sass-loader](https://webpack.js.org/loaders/sass-loader/#src/components/Sidebar/Sidebar.jsx), [node-sass](https://github.com/sass/node-sass), [mini-css-extract-plugin](https://webpack.js.org/plugins/mini-css-extract-plugin/#src/components/Sidebar/Sidebar.jsx) to load styles and compile Sass code to CSS.
+
+```
+npm install copy-webpack-plugin --save-dev
+```
+> Define files to be copied into /dist folder with [copy-webpack-plugin](https://webpack.js.org/plugins/copy-webpack-plugin/#src/components/Sidebar/Sidebar.jsx).
+
+
+```
+npm install url-loader --save-dev
+```
+> Set [url-loader](https://webpack.js.org/loaders/url-loader/#src/components/Sidebar/Sidebar.jsx) as a helper for .png, .jpg, .svg files.
+```
+npm install webpack-dev-server --save-dev
+```
+> And a [devServer](https://webpack.js.org/configuration/dev-server/#src/components/Sidebar/Sidebar.jsx) to start a local server.
 
 <br/>
 
