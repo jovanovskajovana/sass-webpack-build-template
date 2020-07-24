@@ -8,7 +8,7 @@ Here is a quick start guide for [Webpack](https://webpack.js.org/) to a simpler 
 
 To write clear and maintainable code, we want to divide the JavaScript and CSS into small and logical parts. Browsers, on the other hand, prefer not to deal with multiple js files loaded in the app, as it requires many requests every time we visit a website, which is not good for performance.
 
-So, we can use Webpack to bundle all of our CSS and JavaScript files into a single production ready file.
+We use Webpack to bundle all of our CSS and JavaScript files into a single production ready file.
 
 #### Install Webpack
 
@@ -16,7 +16,7 @@ So, we can use Webpack to bundle all of our CSS and JavaScript files into a sing
 npm install webpack webpack-cli --save-dev
 ```
 
-> Make sure you have a stable version of [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) set on your machine, navigate to your project's directory and install Webpack and [Webpack CLI](https://github.com/webpack/webpack-cli).
+> Make sure you have a stable version of [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) set on your machine, then navigate to your project's directory and install Webpack and [Webpack CLI](https://github.com/webpack/webpack-cli).
 
 #### Create webpack.config.js
 
@@ -72,7 +72,7 @@ npm install url-loader --save-dev
 ```
 npm install webpack-dev-server --save-dev
 ```
-> And a [devServer](https://webpack.js.org/configuration/dev-server/#src/components/Sidebar/Sidebar.jsx) to start a local server.
+> And [devServer](https://webpack.js.org/configuration/dev-server/#src/components/Sidebar/Sidebar.jsx) to start a development server.
 
 <br/>
 
@@ -121,7 +121,7 @@ npm install
 ```
 npm run dev
 ```
-> Continue development in the hot-reloading development environment available at http://localhost:8000.
+> Continue development in live reloading environment available at http://localhost:8000.
 
 ```
 npm run build
