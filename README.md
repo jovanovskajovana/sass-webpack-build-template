@@ -1,6 +1,6 @@
 # Sass plus Webpack build template
 
-Here is a quick start guide for [Webpack](https://webpack.js.org/) to a simpler setup and clean module architecture.
+Here is a quick start guide for [Webpack](https://webpack.js.org/) to simpler setup and clean module architecture.
 
 <img src='./src/images/logo-sass-webpack.png' width='370'>
 
