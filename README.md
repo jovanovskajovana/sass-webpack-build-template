@@ -121,7 +121,7 @@ npm install
 ```
 npm run dev
 ```
-> Continue development in live reloading environment available at http://localhost:8000.
+> Continue development in the live reload environment available at http://localhost:8000.
 
 ```
 npm run build
